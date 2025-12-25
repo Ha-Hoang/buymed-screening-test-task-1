@@ -7,9 +7,10 @@ import { formatCurrency } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
+  onClick: () => void;
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = ({ product, onClick }: ProductCardProps) => {
   return (
     <CommonCard
       cardCls="cursor-pointer transition-all delay-75 hover:shadow-lg"
@@ -30,7 +31,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       }
       cardFooterCls="justify-end"
       footer={
-        <button className="flex gap-2 text-white rounded py-1.5 px-3 cursor-pointer bg-[#005c29] hover:bg-[#3e7055] transition-all delay-75">
+        <button className="flex gap-2 text-white rounded py-1.5 px-3 cursor-pointer bg-[#005c29] hover:bg-[#3e7055] transition-all delay-75" onClick={onClick}>
           <ShoppingCart />
           Add to Cart
         </button>

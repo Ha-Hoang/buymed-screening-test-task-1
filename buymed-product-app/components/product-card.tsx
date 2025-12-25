@@ -2,7 +2,7 @@ import { Product } from "@/components/shared/type";
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { ShoppingCart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import CommonCard from "@/components/card";
+import CommonCard from "@/components/common-card";
 import { formatCurrency } from "@/lib/utils";
 
 interface ProductCardProps {

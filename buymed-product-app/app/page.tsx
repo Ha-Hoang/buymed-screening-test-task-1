@@ -4,9 +4,8 @@ import { ProductCard } from "@/components/product-card";
 import Search from "@/components/search";
 import Filter from "@/components/select";
 import { FilterOptions } from "@/components/shared/constant";
-import { ShoppingCart } from "lucide-react";
-import CommonCard from "@/components/card";
-import { formatCurrency } from "@/lib/utils";
+import { OrderSummaryCard } from "@/components/order-summary-card";
+import EmptyCart from "@/components/empty-cart";
 
 export default async function Home() {
   const products = await getProducts();
@@ -28,45 +27,8 @@ export default async function Home() {
           ))}
         </div>
         <div className="col-span-1">
-          <CommonCard
-            cardCls="gap-0 py-3"
-            cardTitleCls="text-xl"
-            title="Order Summary"
-            cardContentCls="border-t border-b py-3"
-            content={
-              <>
-                <div className="flex flex-col gap-3">
-                  <div className="flex flex-col">
-                    <span className="font-semibold">Product Name 1</span>
-                    <div>
-                      <span>Qty: 1</span>
-                      <span className="float-right font-semibold">{formatCurrency(20000, 'vi-VN', 'VND')}</span>
-                    </div>
-                  </div>
-                </div>
-              </>
-            }
-            cardFooterCls="justify-between pt-2"
-            footer={
-              <>
-                <h1 className="text-gray-700 font-medium">Grand Total:</h1>
-                <span className="font-semibold text-lg">{formatCurrency(20000, 'vi-VN', 'VND')}</span>
-              </>
-            }
-          />
-
-          <CommonCard
-            cardContentCls="text-center items-center flex flex-col"
-            content={
-              <>
-                <ShoppingCart size={48} color="#005c29" />
-                <h1 className="font-semibold text-lg">Your cart is empty</h1>
-                <span className="text-[12px] font-light text-gray-600">
-                  Add product to see summary
-                </span>
-              </>
-            }
-          />
+          <OrderSummaryCard />
+          <EmptyCart />
         </div>
       </div>
     </main>

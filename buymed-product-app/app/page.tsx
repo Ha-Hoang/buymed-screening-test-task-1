@@ -9,11 +9,17 @@ import { OrderSummaryCard } from "@/components/order-summary-card";
 import EmptyCart from "@/components/empty-cart";
 import { useEffect, useState } from "react";
 import SpinnerButton from "@/components/spinner-button";
+import { useQueryStates } from "nuqs";
+import { parseAsString } from "nuqs";
 
 export default function Home() {
   const [isShowOrderSummary, setShowOrderSummary] = useState<boolean>(false);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [{ search, filter }] = useQueryStates({
+    search: parseAsString.withDefault(""),
+    filter: parseAsString.withDefault(""),
+  });
 
   const handleAddToCart = () => {
     setShowOrderSummary(true);
@@ -23,7 +29,7 @@ export default function Home() {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const data = await getProducts();
+        const data = await getProducts({ search, filter });
         if (data) {
           setProducts(data);
           setLoading(false);
@@ -33,9 +39,8 @@ export default function Home() {
         setLoading(false);
       }
     };
-
     fetchProducts();
-  }, []);
+  }, [search, filter]);
 
   return (
     <>

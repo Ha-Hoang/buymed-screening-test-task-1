@@ -1,5 +1,6 @@
 export const FilterOptions = [
-  { label: "Category", value: "category" },
-  { label: "Price", value: "price" },
-  { label: "Name", value: "name" },
+  { label: "Pain Relief", value: "Pain Relief" },
+  { label: "Antibiotic", value: "Antibiotic" },
+  { label: "Supplement", value: "Supplement" },
+  { label: "Allergy", value: "Allergy" },
 ];

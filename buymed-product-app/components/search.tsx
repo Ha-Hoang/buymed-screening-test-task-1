@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { SearchIcon } from "lucide-react";
 import {
   InputGroup,
@@ -16,12 +16,16 @@ const Search = ({ placeholder }: SearchItemProps) => {
     defaultValue: "",
   });
 
+  const handleSearch = (value: string) => {
+    setSearch(value);
+  };
+
   return (
     <InputGroup>
       <InputGroupInput
         placeholder={placeholder}
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => handleSearch(e.target.value)}
       />
       <InputGroupAddon>
         <SearchIcon />

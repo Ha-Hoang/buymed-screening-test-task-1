@@ -5,3 +5,8 @@ export interface Product {
   isPrescription: boolean;
   id: string;
 }
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}

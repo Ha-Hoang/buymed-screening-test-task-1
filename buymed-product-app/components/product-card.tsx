@@ -7,7 +7,7 @@ import { formatCurrency } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
-  onClick: () => void;
+  onClick: (product: Product) => void;
 }
 
 export const ProductCard = ({ product, onClick }: ProductCardProps) => {
@@ -31,7 +31,7 @@ export const ProductCard = ({ product, onClick }: ProductCardProps) => {
       }
       cardFooterCls="justify-end"
       footer={
-        <button className="flex gap-2 text-white rounded py-1.5 px-3 cursor-pointer bg-[#005c29] hover:bg-[#3e7055] transition-all delay-75" onClick={onClick}>
+        <button className="flex gap-2 text-white rounded py-1.5 px-3 cursor-pointer bg-[#005c29] hover:bg-[#3e7055] transition-all delay-75" onClick={() => onClick(product)}>
           <ShoppingCart />
           Add to Cart
         </button>

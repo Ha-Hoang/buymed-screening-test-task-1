@@ -6,6 +6,7 @@ import Filter from "@/components/select";
 import { FilterOptions } from "@/components/shared/constant";
 import { ShoppingCart } from "lucide-react";
 import CommonCard from "@/components/card";
+import { formatCurrency } from "@/lib/utils";
 
 export default async function Home() {
   const products = await getProducts();
@@ -36,17 +37,10 @@ export default async function Home() {
               <>
                 <div className="flex flex-col gap-3">
                   <div className="flex flex-col">
-                    <span>Product Name 1</span>
+                    <span className="font-semibold">Product Name 1</span>
                     <div>
                       <span>Qty: 1</span>
-                      <span className="float-right font-semibold">20000 VND</span>
-                    </div>
-                  </div>
-                  <div className="flex flex-col">
-                    <span>Product Name 2</span>
-                    <div>
-                      <span>Qty: 1</span>
-                      <span className="float-right font-semibold">20000 VND</span>
+                      <span className="float-right font-semibold">{formatCurrency(20000, 'vi-VN', 'VND')}</span>
                     </div>
                   </div>
                 </div>
@@ -56,7 +50,7 @@ export default async function Home() {
             footer={
               <>
                 <h1 className="text-gray-700 font-medium">Grand Total:</h1>
-                <span className="font-semibold text-lg">120000 VND</span>
+                <span className="font-semibold text-lg">{formatCurrency(20000, 'vi-VN', 'VND')}</span>
               </>
             }
           />

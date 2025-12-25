@@ -3,6 +3,7 @@ import { CardDescription, CardTitle } from "@/components/ui/card";
 import { ShoppingCart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import CommonCard from "@/components/card";
+import { formatCurrency } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -25,7 +26,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </>
       }
       content={
-        <p className="text-[#005c29] text-2xl font-semibold">{product.price}</p>
+        <p className="text-[#005c29] text-2xl font-semibold">{formatCurrency(product.price, 'vi-VN', 'VND')}</p>
       }
       cardFooterCls="justify-end"
       footer={

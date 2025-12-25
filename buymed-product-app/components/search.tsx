@@ -5,15 +5,24 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { useQueryState } from "nuqs";
 
 interface SearchItemProps {
   placeholder: string;
 }
 
 const Search = ({ placeholder }: SearchItemProps) => {
+  const [search, setSearch] = useQueryState("search", {
+    defaultValue: "",
+  });
+
   return (
     <InputGroup>
-      <InputGroupInput placeholder={placeholder} />
+      <InputGroupInput
+        placeholder={placeholder}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
       <InputGroupAddon>
         <SearchIcon />
       </InputGroupAddon>

@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FilterOptions } from "@/components/shared/constant";
+import { useQueryState } from "nuqs";
 
 interface PlaceholderProps {
   placeholder: string;
@@ -15,8 +16,12 @@ interface PlaceholderProps {
 }
 
 const Filter = ({ placeholder, options }: PlaceholderProps) => {
+  const [filter, setFilter] = useQueryState("filter", {
+    defaultValue: "",
+  });
+
   return (
-    <Select>
+    <Select value={filter} onValueChange={(value) => setFilter(value)}>
       <SelectTrigger className="w-45">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
